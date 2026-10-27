@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>电脑体检报告</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;background:#F5F4F0;color:#23211E;line-height:1.65;padding:32px 16px}
+.report{max-width:720px;margin:0 auto;background:#fff;border-radius:16px;padding:40px 44px;border:1px solid #E2DFD7}
+h1{font-size:24px;font-weight:500;letter-spacing:-.01em}
+.meta{font-size:13px;color:#7A756B;margin-top:6px}
+.verdict{margin:28px 0 8px;padding:22px 24px;border-radius:12px;background:#F7F6F2;border:1px solid #E7E4DB}
+.verdict p{font-size:17px;font-weight:500}
+.counts{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.count{display:flex;align-items:baseline;gap:6px;font-size:13px;color:#5F5A51;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid #E7E4DB}
+.count b{font-size:16px;font-weight:500}
+h2{font-size:15px;font-weight:500;margin:32px 0 14px;color:#5F5A51}
+.issue{border-radius:12px;padding:18px 20px;margin-bottom:12px;border-left:3px solid}
+.issue h3{font-size:15px;font-weight:500;margin-bottom:10px}
+.issue dl{display:grid;grid-template-columns:76px 1fr;gap:6px 10px;font-size:14px}
+.issue dt{color:#7A756B;font-size:13px}
+.issue dd{color:#23211E}
+.r-red{background:#FDECEA;border-color:#C62828}
+.r-red h3{color:#9B1C1C}
+.r-yellow{background:#FFF8E1;border-color:#B26A00}
+.r-yellow h3{color:#8A5200}
+.r-unknown{background:#F5F5F5;border-color:#9E9E9E}
+.r-unknown h3{color:#5F5A51}
+.passed{font-size:14px;color:#3B6D11;background:#EAF3DE;border-radius:12px;padding:16px 20px;border-left:3px solid #639922}
+.card{margin-top:32px;border:1px solid #E2DFD7;border-radius:12px;overflow:hidden}
+.card h2{margin:0;padding:14px 20px;background:#F7F6F2;border-bottom:1px solid #E2DFD7;font-size:14px}
+.card ul{list-style:none;padding:0}
+.card li{padding:12px 20px;border-bottom:1px solid #F0EDE5;font-size:14px;display:grid;grid-template-columns:120px 1fr;gap:12px}
+.card li:last-child{border-bottom:0}
+.card li span:first-child{color:#7A756B;font-size:13px}
+footer{margin-top:28px;font-size:12px;color:#9A948A;text-align:center}
+@media print{body{background:#fff;padding:0}.report{border:0;padding:0}}
+</style>
+</head>
+<body>
+<article class="report">
+<header>
+<h1>电脑体检报告</h1>
+<p class="meta">2026-10-27 21:44 · DEMO-PC · Windows 11 · <strong>演示数据，不是真实检测结果</strong></p>
+</header>
+
+<section class="verdict">
+<p>有 2 件事需要你现在处理，4 件可以缓一缓。</p>
+<div class="counts">
+<span class="count">需要处理 <b>2</b></span>
+<span class="count">值得留意 <b>4</b></span>
+<span class="count">没问题 <b>5</b></span>
+<span class="count">没查成 <b>0</b></span>
+</div>
+</section>
+
+<h2>需要你看一眼的</h2>
+<article class="issue r-red"><h3>防火墙</h3><dl><dt>查到什么</dt><dd>你的「公用网络」防火墙是关着的。</dd><dt>要不要紧</dt><dd>防火墙是电脑的门。门开着，别人从网络进来就不用撬锁了。</dd><dt>怎么办</dt><dd>打开「Windows 安全中心」→「防火墙和网络保护」，把「公用网络」点成「开启」。</dd></dl></article><article class="issue r-red"><h3>系统版本</h3><dl><dt>查到什么</dt><dd>你用的系统版本偏老（7，内部版本 7601），已经不在官方安全更新范围内。</dd><dt>要不要紧</dt><dd>老系统不再收到安全补丁。已经公开的漏洞没人帮你补，谁都知道怎么打。</dd><dt>怎么办</dt><dd>这是这次体检里最该处理的一项。备份好文件，找时间升级系统。</dd></dl></article><article class="issue r-yellow"><h3>远程桌面</h3><dl><dt>查到什么</dt><dd>你的「远程桌面」是开着的。</dd><dt>要不要紧</dt><dd>开了远程桌面，就等于给这台电脑开了一扇可以从别的电脑连进来的门。自己家用不上它的话，等于白留一个入口。</dd><dt>怎么办</dt><dd>如果你不用别的设备连这台电脑：打开「设置」→「系统」→「远程桌面」，把它关掉。</dd></dl></article><article class="issue r-yellow"><h3>浏览器扩展</h3><dl><dt>查到什么</dt><dd>有 3 个扩展能读取你在所有网站上的内容：网页翻译助手(Chrome)、比价小工具(Chrome)、PDF 转换(Edge)。</dd><dt>要不要紧</dt><dd>这类扩展能看到你打开的每一个网页，包括银行、邮箱、公司系统。绝大多数是正常的，但一旦某个扩展被卖掉或者自己出问题，你的登录状态就可能被别人拿到。</dd><dt>怎么办</dt><dd>打开浏览器 →「扩展程序」页面，逐个看。不认识的、很久没用的，直接删掉。常用的留着没关系。</dd></dl></article><article class="issue r-yellow"><h3>磁盘加密</h3><dl><dt>查到什么</dt><dd>系统盘没有加密。</dd><dt>要不要紧</dt><dd>加密是防「电脑丢了」的。别人把硬盘拆下来接到别的机器上，没加密就能直接读你的文件。台式机放在家里影响小，笔记本经常带出门就值得开。</dd><dt>怎么办</dt><dd>打开「控制面板」→「系统和安全」→「BitLocker 驱动器加密」，对系统盘点「启用 BitLocker」。开之前先把恢复密钥存好。</dd></dl></article><article class="issue r-yellow"><h3>磁盘空间</h3><dl><dt>查到什么</dt><dd>系统盘只剩 12.4 GB（7.8%）。</dd><dt>要不要紧</dt><dd>系统盘快满的时候，Windows 会没法更新、程序会莫名其妙卡死、有些软件直接打不开。</dd><dt>怎么办</dt><dd>先清「下载」文件夹和回收站，再打开「设置」→「系统」→「存储」，用「临时文件」清理。至少要留出 15% 以上。</dd></dl></article>
+
+<p class="passed">这些都没问题：病毒防护、老式文件共享、来宾账户、管理员账户、开机自启</p>
+
+<div class="card">
+<h2>这次做了什么</h2>
+<ul>
+<li><span>一句话结果</span><span>有 2 件事需要你现在处理，4 件可以缓一缓。</span></li>
+<li><span>能看见的变化</span><span>这次只检查、没有改动任何设置。你的电脑和体检前完全一样。</span></li>
+<li><span>你自己怎么查</span><span>按上面每条里的「怎么办」操作；报告里的路径都能直接打开。</span></li>
+<li><span>明确没做的事</span><span>没有修改设置、没有删除文件、没有上传任何数据、没有联网。</span></li>
+</ul>
+</div>
+
+<footer>本报告只在本机生成，没有上传到任何地方。</footer>
+</article>
+</body>
+</html>

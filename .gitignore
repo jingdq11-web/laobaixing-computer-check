@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 本地生成的报告
+体检报告.html
+report*.html
+!demo-report.html
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
