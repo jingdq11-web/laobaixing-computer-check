@@ -31,15 +31,25 @@ description: 给不懂技术的人做电脑体检。用户问"我电脑安不安
 
 ### 第一步：跑检测
 
-```sh
-python scripts/check_windows.py
-```
-
-输出是 JSON。要给人看的版本用 `--human`（调试用），要交报告用 `--html`。
+脚本在本 skill 根目录的 `scripts/check_windows.py`。**用完整路径调用，不要依赖当前工作目录**——agent 的工作目录通常不在 skill 目录里。
 
 ```sh
-python scripts/check_windows.py --html --out 体检报告.html
+python "<skill根目录>/scripts/check_windows.py"
 ```
+
+不确定 skill 装在哪，先找一下：
+
+```sh
+ls ~/.workbuddy-ai/skills/laobaixing-computer-check/scripts/
+```
+
+输出是 JSON。要给人看的版本用 `--human`（调试用），要交报告用 `--html --out`：
+
+```sh
+python "<skill根目录>/scripts/check_windows.py" --html --out 体检报告.html
+```
+
+报告默认写到当前工作目录。用户没说存哪，就存到他的桌面或工作区，并把完整路径告诉他。
 
 **只跑这一条命令。** 不要自己另外写脚本去查注册表、不要额外跑别的系统命令、不要顺手做"优化"。
 
