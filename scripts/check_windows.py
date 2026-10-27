@@ -523,6 +523,10 @@ def check_startup() -> dict:
     try:
         import winreg
 
+        # 启动文件夹里混着 desktop.ini 这类文件夹配置文件，不是程序，不能算自启项
+        skip_names = {"desktop.ini", "thumbs.db", ".ds_store", "ini"}
+        skip_ext = {".ini", ".txt", ".url", ".lnk.bak"}
+
         run_keys = [
             (winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", "当前用户"),
             (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "所有用户"),
@@ -535,6 +539,8 @@ def check_startup() -> dict:
         items: list[dict] = []
         for root, path, scope in run_keys:
             for name, value in reg_enum_values(root, path).items():
+                if name.lower() in skip_names:
+                    continue
                 items.append({"name": name, "path": value, "scope": scope})
 
         startup_dir = os.path.join(
@@ -543,6 +549,11 @@ def check_startup() -> dict:
         )
         if os.path.isdir(startup_dir):
             for entry in os.listdir(startup_dir):
+                low = entry.lower()
+                if low in skip_names or os.path.splitext(low)[1] in skip_ext:
+                    continue
+                if low.endswith(".ini"):
+                    continue
                 items.append({"name": entry, "path": startup_dir, "scope": "启动文件夹"})
 
         if len(items) >= 12:
